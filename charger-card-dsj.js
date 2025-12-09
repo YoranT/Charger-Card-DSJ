@@ -5,15 +5,17 @@ class ChargerCardDSJ extends HTMLElement {
       throw new Error("device_id is verplicht");
     }
   
+    // Belangrijk: nieuw object maken, niet config direct gebruiken
     this._config = {
       device_id: config.device_id,
       charger_color: config.charger_color || "white"
     };
   }
-
+  
   set hass(hass) {
+    if (!hass) return;
     this._hass = hass;
-    this.render();
+    if (this.isConnected) this.render();
   }
 
   entity(id) {
