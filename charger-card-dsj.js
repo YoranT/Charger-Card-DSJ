@@ -35,15 +35,13 @@ class ChargerCardDSJ extends HTMLElement {
     return "0.7s";
   }
 
-  // Charger body image
   getBodyImage(color) {
     return `/hacsfiles/Charger-Card-DSJ/images/charger_${color}.png`;
   }
 
-  // LED animations (only for certain statuses)
   getLEDImage(status) {
     const base = "/hacsfiles/Charger-Card-DSJ/images";
-
+  
     switch (status) {
       case "charging":
         return `${base}/leds_blue_all.gif`;
@@ -56,7 +54,7 @@ class ChargerCardDSJ extends HTMLElement {
       case "disconnected":
         return `${base}/leds_off.gif`;
       default:
-        return null; 
+        return null;
     }
   }
 
