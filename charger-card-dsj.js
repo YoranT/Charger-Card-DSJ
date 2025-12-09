@@ -1,9 +1,14 @@
 class ChargerCardDSJ extends HTMLElement {
 
   setConfig(config) {
-    if (!config.device_id) throw new Error("device_id is verplicht");
-    this._config = config;
-    this._config.charger_color = config.charger_color || "white";
+    if (!config.device_id) {
+      throw new Error("device_id is verplicht");
+    }
+  
+    this._config = {
+      device_id: config.device_id,
+      charger_color: config.charger_color || "white"
+    };
   }
 
   set hass(hass) {
