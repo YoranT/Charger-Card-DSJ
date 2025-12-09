@@ -28,30 +28,28 @@ class ChargerCardDSJ extends HTMLElement {
     return "0.7s";
   }
 
-  getLEDImage(status, color) {
-    const base = "/local/charger";
+  // Charger body image
+  getBodyImage(color) {
+    return `/hacsfiles/Charger-Card-DSJ/images/charger_${color}.png`;
+  }
+
+  // LED animations (only for certain statuses)
+  getLEDImage(status) {
+    const base = "/hacsfiles/Charger-Card-DSJ/images";
 
     switch (status) {
       case "charging":
-        return `${base}/leds_blue_all.gif`; 
-
+        return `${base}/leds_blue_all.gif`;
       case "completed":
         return `${base}/leds_white_all.gif`;
-
       case "awaiting_authorization":
         return `${base}/leds_white_flashing.gif`;
-
-      case "ready_to_charge":
-        return `${base}/charger_${color}.png`;
-
       case "error":
         return `${base}/leds_red_flashing.gif`;
-
       case "disconnected":
         return `${base}/leds_off.gif`;
-
       default:
-        return `${base}/charger_${color}.png`;
+        return null; 
     }
   }
 
@@ -88,7 +86,14 @@ class ChargerCardDSJ extends HTMLElement {
     const status = this.entity("status");
     const error = this.entity("reden_geen_stroom");
     const amp = this.val("laadstroom");
-    const img = this.getLEDImage(status, color);
+
+    const bodyImage = this.getBodyImage(color);
+    const ledImage = this.getLEDImage(status);
+
+    // We kiezen LED animatie, tenzij status dat niet ondersteunt
+    const isAnimated = !!ledImage;
+    const image = ledImage || bodyImage;
+
     const animationSpeed = this.getAnimationSpeed(amp);
 
     this.innerHTML = `
@@ -109,7 +114,10 @@ class ChargerCardDSJ extends HTMLElement {
       img.charger {
         width: 140px;
         height: auto;
-        animation: flicker ${animationSpeed} linear infinite;
+      }
+
+      img.animated {
+        animation: flicker linear infinite;
       }
 
       @keyframes flicker {
@@ -123,7 +131,9 @@ class ChargerCardDSJ extends HTMLElement {
       <div class="card">
 
         <div style="grid-area: icon;">
-          <img class="charger" src="${img}">
+          <img class="charger ${isAnimated ? "animated" : ""}"
+               src="${image}" 
+               style="${isAnimated ? `animation-duration:${animationSpeed};` : ""}">
         </div>
 
         <div class="status" style="grid-area: status;">
