@@ -2,11 +2,29 @@
   "name": "Charger Card DSJ",
   "filename": "charger-card-dsj.js",
   "render_readme": true,
-  "content_in_root": false,
   "resources": [
     {
-      "file": "charger-card-dsj.js",
-      "type": "module"
+      "type": "module",
+      "file": "charger-card-dsj.js"
     }
+  ],
+  "assets": [
+    "images/charger_white.png",
+    "images/charger_red.png",
+    "images/charger_darkblue.png",
+    "images/charger_black.png",
+    "images/charger_anthracite.png",
+    "images/charger_generic.png",
+    "images/leds_bg.gif",
+    "images/leds_blue_1.gif",
+    "images/leds_blue_2.gif",
+    "images/leds_blue_all.gif",
+    "images/leds_blue_flashing.gif",
+    "images/leds_white_1.gif",
+    "images/leds_white_2.gif",
+    "images/leds_white_all.gif",
+    "images/leds_white_flashing.gif",
+    "images/leds_red_flashing.gif",
+    "images/leds_off.gif"
   ]
 }
