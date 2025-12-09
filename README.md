@@ -1,4 +1,4 @@
-#Charger Card DSJ
+# Charger Card DSJ
 
 Een strakke Home Assistant kaart voor Easee-laders, gemaakt door De Slimme Jongens.
 Kies je eigen kleur, automatische animaties, LED-statusindicatie, en alle data direct uit de laadpaal.
