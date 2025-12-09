@@ -1,6 +1,12 @@
 {
   "name": "Charger Card DSJ",
-  "content_in_root": false,
   "filename": "charger-card-dsj.js",
-  "render_readme": true
+  "render_readme": true,
+  "content_in_root": false,
+  "resources": [
+    {
+      "file": "charger-card-dsj.js",
+      "type": "module"
+    }
+  ]
 }
